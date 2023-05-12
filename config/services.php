@@ -31,4 +31,7 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'apylayer' => [
+        'key' => env('APILAYER_API_KEY'),
+    ],
 ];
