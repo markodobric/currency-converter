@@ -8,7 +8,6 @@ use App\Exceptions\UnableToFetchExchangeRateException;
 use App\Models\Enum\CurrencyCode;
 use App\Service\ExchangeRateServiceInterface;
 use Illuminate\Http\Client\ConnectionException;
-use Illuminate\Http\Client\Response;
 use Illuminate\Support\Carbon;
 use Psr\Log\LoggerInterface;
 
@@ -22,16 +21,11 @@ class ApiLayerExchangeRateService implements ExchangeRateServiceInterface
     public function getLatestExchangeRates(): CurrencyExchangeRateDto
     {
         try {
-            /** @var Response $response */
             $response = call_user_func(
                 $this->apiLayerConnectorService,
                 CurrencyCode::USD,
                 collect([CurrencyCode::GBP, CurrencyCode::JPY, CurrencyCode::EUR])
             );
-
-            if (!$response->successful()) {
-                throw new UnableToFetchExchangeRateException;
-            }
 
             $rates = [];
             foreach ($response['rates'] as $currency => $rate) {

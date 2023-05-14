@@ -2,8 +2,8 @@
 
 namespace App\Service\ApiLayer;
 
+use App\Exceptions\UnableToFetchExchangeRateException;
 use App\Models\Enum\CurrencyCode;
-use Illuminate\Http\Client\Response;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 
@@ -13,9 +13,9 @@ class ApiLayerConnectorService
 
     public function __construct(private readonly string $apiKey) {}
 
-    public function __invoke(CurrencyCode $base, Collection $references): Response
+    public function __invoke(CurrencyCode $base, Collection $references): array
     {
-        return Http::withHeaders(
+        $response = Http::withHeaders(
                 [
                     'Content-Type' => 'application/json',
                     'apikey' => $this->apiKey,
@@ -32,5 +32,11 @@ class ApiLayerConnectorService
                     ),
                 ]
             );
+
+        if (!$response->successful()) {
+            throw new UnableToFetchExchangeRateException;
+        }
+
+        return $response->json();
     }
 }
