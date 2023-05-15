@@ -22,13 +22,14 @@ return new class extends Migration
                 ->constrained('currencies')
                 ->cascadeOnUpdate()
                 ->restrictOnDelete();
-            $table->decimal('base_currency_amount', unsigned: true);
+            $table->decimal('base_currency_amount', total: 20, places: 6, unsigned: true);
             $table->decimal('foreign_currency_amount', total: 20, places: 6, unsigned: true);
             $table->decimal('foreign_currency_exchange_rate', total: 20, places: 6, unsigned: true);
-            $table->decimal('surcharge_percentage');
-            $table->decimal('surcharge_amount', total: 20, places: 6, unsigned: true);
-            $table->decimal('discount_percentage');
-            $table->decimal('discount_amount', total: 20, places: 6, unsigned: true);
+            $table->decimal('surcharge_percentage')->nullable()->default(null);
+            $table->decimal('surcharge_amount', total: 20, places: 6, unsigned: true)->nullable()->default(null);
+            $table->decimal('discount_percentage')->nullable()->default(null);
+            $table->decimal('discount_amount', total: 20, places: 6, unsigned: true)->nullable()->default(null);
+            $table->decimal('total', total: 20, places: 6, unsigned: true);
             $table->timestamps();
         });
     }

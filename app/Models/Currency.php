@@ -7,12 +7,24 @@ use App\Models\Enum\CurrencyCode;
 /**
  * @property string $name
  * @property CurrencyCode $code
- * @property float|null $surcharge
- * @property float|null $discount
+ * @property string|null $surcharge
+ * @property string|null $discount
  */
 class Currency extends BaseModel
 {
     protected $casts = [
         'code' => CurrencyCode::class,
+        'surcharge' => 'string',
+        'discount' => 'string',
     ];
+
+    public function hasSurcharge(): bool
+    {
+        return $this->surcharge !== null;
+    }
+
+    public function hasDiscount(): bool
+    {
+        return $this->discount !== null;
+    }
 }

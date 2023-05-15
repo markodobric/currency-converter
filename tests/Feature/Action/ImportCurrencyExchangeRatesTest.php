@@ -6,7 +6,7 @@ use App\Action\ImportCurrencyExchangeRates;
 use App\Data\CurrencyExchangeRateDto;
 use App\Data\RateDto;
 use App\Models\Enum\CurrencyCode;
-use App\Service\ExchangeRateServiceInterface;
+use App\Service\ExchangeRate\ExchangeRateServiceInterface;
 use Mockery\MockInterface;
 use Tests\IntegrationTestCase;
 

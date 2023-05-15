@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Service\ApiLayer;
+namespace App\Service\ExchangeRate\ApiLayer;
 
 use App\Exceptions\UnableToFetchExchangeRateException;
 use App\Models\Enum\CurrencyCode;

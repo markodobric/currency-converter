@@ -4,7 +4,7 @@ namespace App\Action;
 
 use App\Data\RateDto;
 use App\Models\CurrencyExchangeRate;
-use App\Service\ExchangeRateServiceInterface;
+use App\Service\ExchangeRate\ExchangeRateServiceInterface;
 
 class ImportCurrencyExchangeRates
 {

@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace App\Service\ApiLayer;
+namespace App\Service\ExchangeRate\ApiLayer;
 
 use App\Data\CurrencyExchangeRateDto;
 use App\Data\RateDto;
 use App\Exceptions\UnableToFetchExchangeRateException;
 use App\Models\Enum\CurrencyCode;
-use App\Service\ExchangeRateServiceInterface;
+use App\Service\ExchangeRate\ExchangeRateServiceInterface;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Carbon;
 use Psr\Log\LoggerInterface;

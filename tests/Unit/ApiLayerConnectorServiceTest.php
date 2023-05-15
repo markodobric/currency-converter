@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use App\Exceptions\UnableToFetchExchangeRateException;
 use App\Models\Enum\CurrencyCode;
-use App\Service\ApiLayer\ApiLayerConnectorService;
+use App\Service\ExchangeRate\ApiLayer\ApiLayerConnectorService;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Mockery\MockInterface;

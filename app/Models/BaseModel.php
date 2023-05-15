@@ -2,9 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ */
 abstract class BaseModel extends Model
 {
-    protected $fillable = ['*'];
+    use HasFactory;
+
+    protected $guarded = [];
 }

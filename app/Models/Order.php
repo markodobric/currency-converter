@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\OrderCreated;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
@@ -17,6 +18,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Order extends BaseModel
 {
+    protected $dispatchesEvents = [
+        'created' => OrderCreated::class,
+    ];
+
     public function baseCurrency(): BelongsTo
     {
         return $this->belongsTo(Currency::class, 'base_currency_id');
