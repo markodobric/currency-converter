@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Repository\CurrencyExchangeRateRepositoryInterface;
+use App\Repository\CurrencyRepositoryInterface;
 use App\Repository\Eloquent\BaseRepository;
 use App\Repository\Eloquent\CurrencyExchangeRateRepository;
+use App\Repository\Eloquent\CurrencyRepository;
 use App\Repository\RepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
@@ -19,6 +21,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             CurrencyExchangeRateRepositoryInterface::class,
             CurrencyExchangeRateRepository::class
+        );
+        $this->app->bind(
+            CurrencyRepositoryInterface::class,
+            CurrencyRepository::class
         );
     }
 

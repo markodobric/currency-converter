@@ -2,24 +2,24 @@
 
 namespace App\Listeners;
 
+use App\Events\OrderCreated;
+use App\Mail\NewOrderCreated;
+use App\Models\Enum\CurrencyCode;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Mail;
 
 class SendOrderEmail implements ShouldQueue
 {
-    /**
-     * Create the event listener.
-     */
     public function __construct()
     {
-        //
     }
 
-    /**
-     * Handle the event.
-     */
-    public function handle(object $event): void
+    public function handle(OrderCreated $event): void
     {
-        //
+        if ($event->order->foreignCurrency->code === CurrencyCode::GBP) {
+            $recipient = 'recipient@hello.com';
+
+            Mail::to($recipient)->send(new NewOrderCreated($event->order));
+        }
     }
 }

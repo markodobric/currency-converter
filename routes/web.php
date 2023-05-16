@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::redirect('/', '/currency-converter');
+
+Route::prefix('/currency-converter')->group(function () {
+    Route::get('', [HomeController::class, 'index'])->name('index');
+    Route::post('', [HomeController::class, 'buy'])->name('buy');
 });

@@ -1,12 +1,11 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace App\Data;
 
 use LogicException;
+use Spatie\LaravelData\Data;
 
-class DecimalValue
+class DecimalValue extends Data
 {
     public function __construct(public readonly string $value = '0.0')
     {

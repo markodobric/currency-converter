@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Console\Commands;
 
@@ -15,6 +15,6 @@ class CreateOrderCommand extends Command
 
     public function handle(CreateOrder $action): void
     {
-        call_user_func($action, new DecimalValue('500'), Currency::find(1), Currency::find(4));
+        call_user_func($action, new DecimalValue('500'), Currency::find(1), Currency::find(3));
     }
 }

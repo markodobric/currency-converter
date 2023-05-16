@@ -4,6 +4,7 @@ namespace Tests\Feature\Action;
 
 use App\Action\CreateOrder;
 use App\Data\DecimalValue;
+use App\Data\PurchaseData;
 use App\Models\Currency;
 use App\Models\CurrencyExchangeRate;
 use Tests\IntegrationTestCase;
@@ -27,9 +28,11 @@ class CreateOrderTest extends IntegrationTestCase
     {
         $order = call_user_func(
             $this->app->get(CreateOrder::class),
-            new DecimalValue('232'),
-            $this->currency1,
-            $this->currency2
+            new PurchaseData(
+                $this->currency1->id,
+                $this->currency2->id,
+                new DecimalValue('232')
+            )
         );
 
         $this->assertDatabaseHas('orders', ['id' => $order->id]);
