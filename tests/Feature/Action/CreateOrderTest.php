@@ -31,7 +31,7 @@ class CreateOrderTest extends IntegrationTestCase
             new PurchaseData(
                 $this->currency1->id,
                 $this->currency2->id,
-                new DecimalValue('232')
+                '232'
             )
         );
 

@@ -4,7 +4,6 @@ namespace App\Action;
 
 use App\Data\DecimalValue;
 use App\Data\PurchaseData;
-use App\Models\Currency;
 use App\Models\Order;
 use App\Repository\CurrencyRepositoryInterface;
 use App\Service\OrderCalculator\OrderCalculatorInterface;

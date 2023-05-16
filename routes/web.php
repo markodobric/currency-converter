@@ -19,4 +19,5 @@ Route::redirect('/', '/currency-converter');
 Route::prefix('/currency-converter')->group(function () {
     Route::get('', [HomeController::class, 'index'])->name('index');
     Route::post('', [HomeController::class, 'buy'])->name('buy');
+    Route::post('/calculate', [HomeController::class, 'calculate'])->name('calculate');
 });
