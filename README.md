@@ -20,3 +20,7 @@ To import exhange rates, we use APILayer 3rd party service (https://apilayer.com
 Subscribe to free plan, grab your API Key and put it to `APILAYER_API_KEY` environment variable.
 
 Run `php artisan app:import-currency-exchange-rate`.
+
+# Testing
+
+Run `php artisan test`.
